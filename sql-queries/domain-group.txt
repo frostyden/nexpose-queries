@@ -1,0 +1,7 @@
+SELECT da.ip_address, da.host_name, da.mac_address, dasc.value as domain_name
+FROM dim_asset da
+	JOIN dim_asset_service_configuration dasc USING (asset_id)
+WHERE  dasc.asset_id = da.asset_id
+AND desc.service_id = 16
+AND dasc.name = 'advertised-name-2'
+ORDER BY da.host_name
