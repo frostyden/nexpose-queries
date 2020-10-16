@@ -1,5 +1,6 @@
-SELECT da.ip_address, da.host_name, da.mac_address, das. description as OS
+SELECT da.ip_address, da.host_name, da.mac_address, dos.name as OS
 FROM dim_asset da
 	JOIN dim_operating_system dos USING (operating_system_id)
-WHERE da.operating_system_id = dos.operating_system_id and dos.vendor = 'Microsoft'
-ORDER BY da.host_name
+WHERE da.operating_system_id = dos.operating_system_id
+and dos.name like '%Mac%'
+ORDER BY dos.name
